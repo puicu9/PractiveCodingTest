@@ -10,9 +10,8 @@ def solution(survey, choices):
     print('-' * 40)
 
     for i in range(len(survey)):
-
-        leftChar = str(survey[i][0]) # 'A'
-        rightChar = str(survey[i][1]) # 'N'
+        leftChar = str(survey[i][0])
+        rightChar = str(survey[i][1])
         print('firIdx : ', leftChar)
         print('secIdx : ', rightChar)
 
@@ -21,10 +20,10 @@ def solution(survey, choices):
 
         if num < 4:
             print('오른쪽에 더하기')
-            su[leftChar] += num
-        elif num > 4:
+            su[leftChar] += int(num)
+        if num > 4:
             print('왼쪽에 더하기')
-            su[rightChar] += num
+            su[rightChar] += int(num)
         #End if
         print('-' * 40)
     #End for
@@ -40,9 +39,25 @@ def solution(survey, choices):
 # 매우 비동의 N
 # 위 예시처럼 네오형이 비동의, 어피치형이 동의인 경우만 주어지지 않고,
 # 질문에 따라 네오형이 동의, 어피치형이 비동의인 경우도 주어질 수 있습니다.
-testSurvey = ["AN", "CF", "MJ", "RT", "NA"]
-TestChoices = [5, 3, 2, 7, 5]
+testSurvey01 = ["AN", "CF", "MJ", "RT", "NA"]
+TestChoices01 = [5, 3, 2, 7, 5]
 
+testSurvey02 = ["TR", "RT", "TR"]
+TestChoices02 = [7, 1, 3]
 
-print(solution(testSurvey, TestChoices))
+testSurvey03 = ["RT", "TR", "CF", "FC", "JM", "MJ", "AN", "NA"]
+TestChoices03 = [7,     1,    3,    3,    6,    4,    3,    1]
+# T : 7 + 1, C : 3, F:3, J :  , M :6,  A :3, N : 1
+# T 8, C 3, J 0, M 6, A 3, N : 1
+# TCMA
+
+print(solution(testSurvey01, TestChoices01))
 print('정답은 TCMA로 나와야함')
+
+print('-' * 50)
+print(solution(testSurvey02, TestChoices02))
+print('정답 : RCJA')
+
+print('-' * 50)
+print(solution(testSurvey03, TestChoices03))
+print('정답 : TCJA')
